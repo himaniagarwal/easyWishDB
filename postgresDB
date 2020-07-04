@@ -1,0 +1,6 @@
+#! /usr/bin/env bash
+set -e
+docker pull postgres:11
+docker run --name postgresInstance -p 5432:5432 -e POSTGRES_PASSWORD=admin -d postgres:11
+sleep 3
+docker exec postgresInstance psql -U postgres -c"CREATE DATABASE easywish" postgres
